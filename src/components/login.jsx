@@ -6,7 +6,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
 
     const irAUrl = () => {
-         window.location.href = "http://localhost:3000/gallery";
+         window.location.href = "https://dashmodel.onrender.com/gallery";
         //window.location.href = 'deployado';
     };
 
@@ -19,7 +19,7 @@ const Login = () => {
 
         if (username === correctUsername && password === correctPassword) {
             alert('Inicio de sesión exitoso');
-             window.location.href = 'http://localhost:3000/gallery';
+             window.location.href = 'https://dashmodel.onrender.com/gallery';
             //window.location.href = 'deployado';
         } else {
             alert('Nombre de usuario o contraseña incorrectos');
