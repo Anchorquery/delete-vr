@@ -24,7 +24,7 @@ function Gallery() {
             {images.map(image => (
                 <div className="col-md-4 p-1 card-image" key={image.id}
                 onClick={() => navigate(`/images/${image.id}`)}>
-                    <model-viewer src={image.url} alt="3D model" auto-rotate camera-controls style={{ width: '100%', height: '400px' }}></model-viewer>
+                    <model-viewer  alt="3D model" auto-rotate camera-controls style={{ width: '100%', height: '400px' }}></model-viewer>
                 </div>
             ))}
         </div>
