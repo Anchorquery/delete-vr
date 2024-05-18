@@ -10,7 +10,7 @@ function Gallery() {
 
     useEffect(() => {
         (async () => {
-            const res = await axios.get("https://test.ddvelop.com/images");//deployado
+            const res = await axios.get("https://test.ddvelop.com/api/images");//deployado
             console.log(res);
             setImages(res.data);
         })();
