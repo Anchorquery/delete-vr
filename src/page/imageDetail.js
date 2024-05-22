@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import QRCodeGenerator from '../components/qr';
 import '@google/model-viewer';
+import Navbar from "../components/Navbar";
 
 import "./imagenDetail.css"
 
@@ -15,6 +16,8 @@ const Detail = () => {
     title: "",
     url: "",
     id: "",
+    secondUrl:"",
+    medidas:"",
   });
   const params = useParams();
 
@@ -25,14 +28,14 @@ const Detail = () => {
         console.error('Invalid id:', params.id);
         return;
       }
-      const res = await axios.get("https://test.ddvelop.com/api/images/" + id);//deployado
+      const res = await axios.get("http://localhost:4000/api/images/" + id);//deployado
       setImage(res.data);
     })();
   }, [params.id]);
 
   const handleDelete = async () => {
-    await axios.delete("https://test.ddvelop.com/api/images/" + params.id);//deployado
-    navigate('/');
+    await axios.delete("http://localhost:4000/api/images/" + params.id);//deployado
+    navigate('/gallery');
   }
 
   const startAR = () => {
@@ -61,10 +64,14 @@ const Detail = () => {
           <p>Debes estar entre 1.5 metro a 2 metros de distancia para visualizar en el tamaño aproximado </p>
           <button onClick={cerrarCartel}>Entendido</button>
         </div>
+        <Navbar/>
+        <br/>
         <div className="card bg-dark">
+      
           <model-viewer
             src={image.url}
             alt={image.title}
+            ios-src={image.secondUrl}
             style={{ width: '100%', height: '500px' }}
             auto-rotate
             camera-controls
@@ -79,18 +86,18 @@ const Detail = () => {
           <button className="btn btn-outline-primary" onClick={startAR}>Ver en tu espacio</button>
 
           <div className="card-body">
-            <h1>{image.title}</h1>
+            <h1 className="diga">{image.title}</h1>
             <button className="btn btn-outline-danger" onClick={handleDelete}>
               <span className="material-icons">delete</span>
             </button>
           </div>
         </div>
-        <button onClick={() => setModalVisible(true)} className="btn btn-primary">
+        <button onClick={() => setModalVisible(true)} className="aloja btn btn-primary">
           Genera codigo QR
         </button>
         {modalVisible && (
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '600px', height: '600px', backgroundColor: 'lightgray' }} className="bg-success p-2 text-dark bg-opacity-50 rounded">
-            <p>Esta es una ventana más pequeña.</p>
+            <p>Precione porfavor el boton Generar para visualizar una imagen QR.</p>
             <QRCodeGenerator />
             <button onClick={() => setModalVisible(false)} className="btn btn-outline-danger">
               Cerrar ventana

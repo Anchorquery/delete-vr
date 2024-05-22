@@ -23,3 +23,18 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
+.diga{
+    color: aliceblue;
+}
+
+.card{
+    width: 150%;
+    position: absolute;
+    left: -20%;
+}
+
+.aloja{
+position: absolute;
+left: 45%;
+}
