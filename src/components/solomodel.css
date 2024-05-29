@@ -1,0 +1,71 @@
+.popup {
+    position: fixed;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    top: 15%;
+    left: 48.5%;
+    transform: translate(-50%, -50%);
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.popup button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn1{
+    background-color: #007bff;
+    position: absolute;
+    left: 27%;
+    top:90%;
+    width: 45%;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+}
+
+
+.diga1{
+    color: rgb(2, 15, 26);
+}
+
+
+
+@media(max-width:768px){
+    .btn1{
+        background-color: #007bff;
+        position: absolute;
+        left: 26%;
+        top:89%;
+        width: 45%;
+        padding: 10px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        border: none;
+    }   
+}
+
+@media(max-width:768px){
+    .cartita{
+        position: absolute;
+        left: 5%;
+        width: 90%;
+        background-color: #f9f9f9;
+    }
+    .uno{
+        background-color: #007bff;
+    }
+}
+

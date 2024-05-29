@@ -16,7 +16,6 @@ const Detail = () => {
     title: "",
     url: "",
     id: "",
-    secondUrl:"",
     medidas:"",
   });
   const params = useParams();
@@ -71,7 +70,6 @@ const Detail = () => {
           <model-viewer
             src={image.url}
             alt={image.title}
-            ios-src={image.secondUrl}
             style={{ width: '100%', height: '500px' }}
             auto-rotate
             camera-controls
@@ -93,17 +91,18 @@ const Detail = () => {
           </div>
         </div>
         <button onClick={() => setModalVisible(true)} className="aloja btn btn-primary">
-          Genera codigo QR
+           Codigo QR
         </button>
         {modalVisible && (
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '600px', height: '600px', backgroundColor: 'lightgray' }} className="bg-success p-2 text-dark bg-opacity-50 rounded">
-            <p>Precione porfavor el boton Generar para visualizar una imagen QR.</p>
+           
             <QRCodeGenerator />
             <button onClick={() => setModalVisible(false)} className="btn btn-outline-danger">
               Cerrar ventana
             </button>
           </div>
         )}
+        {/* <QRCodeGenerator /> */}
       </div>
     </div>
   );

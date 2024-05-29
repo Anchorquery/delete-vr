@@ -4,7 +4,6 @@ import axios from "axios";
 
 function Form() {
     const [file, setFile] = useState();
-    const [secondFile, setSecondFile] = useState(); // Estado para el segundo archivo
     const [medidas, setMedidas] = useState(""); // Estado para las medidas
     const [title, setTitle] = useState("");
     const [uploadPercentage, setUploadPercentage] = useState(0);
@@ -15,10 +14,6 @@ function Form() {
         setFile(file);
     };
 
-    const handleSecondFileChange = (e) => {
-        const file = e.target.files[0];
-        setSecondFile(file);
-    };
 
     const handleMedidasChange = (e) => {
         setMedidas(e.target.value);
@@ -30,7 +25,6 @@ function Form() {
 
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("secondFile", secondFile); // Agregar el segundo archivo al FormData
         formData.append("title", title);
         formData.append("medidas", medidas); // Agregar las medidas al FormData
 
@@ -48,7 +42,6 @@ function Form() {
 
             alert('Archivo cargado con éxito.');
             setFile(null);
-            setSecondFile(null); // Limpieza del estado del segundo archivo
             setMedidas(""); // Limpieza del estado de las medidas
             setTitle('');
             setUploadPercentage(0);
@@ -93,12 +86,7 @@ function Form() {
                             onChange={handleChange}
                         />
                         <br></br>
-                        <h5>Archivo USDZ</h5>
-                        <input
-                            type="file"
-                            className="form-control bg-dark text-light rounded-0 border border-secondary my-3"
-                            onChange={handleSecondFileChange}
-                        />
+                      
                        <h5>Medidas</h5>
                         <input
                             type="text"
@@ -110,7 +98,7 @@ function Form() {
                         <div className="my-3">
                             <button
                                 className="btn btn-success rounded-0 w-100"
-                                disabled={loading || !file || !secondFile || !medidas}
+                                disabled={loading || !file || !medidas}
                             >
                                 {!loading ? "Upload" : (
                                     <span

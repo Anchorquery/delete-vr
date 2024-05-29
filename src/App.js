@@ -4,6 +4,7 @@ import ImageDetail from "./page/imageDetail";
 import ImageForm from "./page/imageForm";
 import ImageGallery from "./page/imageGallery";
 import Login from "./components/login";
+import SoloModelo from "./components/soloModelo";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,6 +18,7 @@ function App() {
           <Route path='/gallery' element={<ImageGallery />} />
           <Route path='/upload' element={<ImageForm />} />
           <Route path='/images/:id' element={<ImageDetail />} />
+          <Route path="/solo-modelo/:id" element={<SoloModelo />} />
         </Routes>
       </div>
    );
