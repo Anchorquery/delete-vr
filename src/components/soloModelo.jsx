@@ -11,19 +11,22 @@ const SoloModelo = () => {
     const [image, setImage] = useState({
         title: "",
         url: "",
-        medidas:""
+        medidas:"",
+        slug: ""
     });
     const params = useParams();
 
     useEffect(() => {
-        // Carga los datos del modelo 3D como antes
-        const id = parseInt(params.id);
-        if (!isNaN(id)) {
-            axios.get(`https://test.ddvelop.com/api/images/${id}`)
-                .then(res => setImage(res.data))
-                .catch(err => console.error(err));
-        }
-    }, [params.id]);
+        (async () => {
+          const slug = params.slug;
+          if (!slug) {
+            console.error('Slug inválido:', params.slug);
+            return;
+          }
+          const res = await axios.get(`https://test.ddvelop.com/api/images/${slug}`);
+          setImage(res.data);
+        })();
+      }, [params.slug]);
 
     const startAR = () => {
         // Abre la cámara del dispositivo

@@ -13,7 +13,7 @@ function QRCodeGenerator() {
     }, []); 
 
     const GenerateQRCode = () => {
-        const currentUrl = `${window.location.origin}/solo-modelo/${params.id}`;
+        const currentUrl = `${window.location.origin}/solo-modelo/${params.slug}`;
 
         QRCode.toDataURL(currentUrl, {
             width: 600,

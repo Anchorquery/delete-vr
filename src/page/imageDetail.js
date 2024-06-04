@@ -16,44 +16,45 @@ const Detail = () => {
     title: "",
     url: "",
     id: "",
-    medidas:"",
+    medidas: "",
+    slug: ""
   });
   const params = useParams();
 
   useEffect(() => {
     (async () => {
-      const id = parseInt(params.id);
-      if (isNaN(id)) {
-        console.error('Invalid id:', params.id);
+      const slug = params.slug;
+      if (!slug) {
+        console.error('Slug inválido:', params.slug);
         return;
       }
-      const res = await axios.get("https://test.ddvelop.com/api/images/" + id);//deployado
+      const res = await axios.get(`https://test.ddvelop.com/api/images/${slug}`);
       setImage(res.data);
     })();
-  }, [params.id]);
+  }, [params.slug]);
 
   const handleDelete = async () => {
-    await axios.delete("https://test.ddvelop.com/api/images/" + params.id);//deployado
+    await axios.delete(`https://test.ddvelop.com/api/images/${image.slug}`);//deployado
     navigate('/gallery');
   }
 
-  const startAR = () => {
-    // Abre la cámara del dispositivo
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(function (stream) {
-        // La cámara está activa, puedes hacer algo con el flujo de video si lo deseas
-        console.log("Cámara activada");
-      })
-      .catch(function (error) {
-        // Si hay un error al acceder a la cámara
-        console.error("Error al acceder a la cámara:", error);
-      });
-  };
+  // const startAR = () => {
+  //   // Abre la cámara del dispositivo
+  //   navigator.mediaDevices.getUserMedia({ video: true })
+  //     .then(function (stream) {
+  //       // La cámara está activa, puedes hacer algo con el flujo de video si lo deseas
+  //       console.log("Cámara activada");
+  //     })
+  //     .catch(function (error) {
+  //       // Si hay un error al acceder a la cámara
+  //       console.error("Error al acceder a la cámara:", error);
+  //     });
+  // };
 
   function cerrarCartel() {
     // Oculta el cartel
     document.querySelector('.popup').style.display = 'none';
-}
+  }
 
 
   return (
@@ -63,10 +64,10 @@ const Detail = () => {
           <p>Debes estar entre 1.5 metro a 2 metros de distancia para visualizar en el tamaño aproximado </p>
           <button onClick={cerrarCartel}>Entendido</button>
         </div>
-        <Navbar/>
-        <br/>
+        <Navbar />
+        <br />
         <div className="card bg-dark">
-      
+
           <model-viewer
             src={image.url}
             alt={image.title}
@@ -81,7 +82,7 @@ const Detail = () => {
             disable-zoom
           ></model-viewer>
 
-          <button className="btn btn-outline-primary" onClick={startAR}>Ver en tu espacio</button>
+          {/* <button className="btn btn-outline-primary" onClick={startAR}>Ver en tu espacio</button> */}
 
           <div className="card-body">
             <h1 className="diga">{image.title}</h1>
@@ -91,11 +92,11 @@ const Detail = () => {
           </div>
         </div>
         <button onClick={() => setModalVisible(true)} className="aloja btn btn-primary">
-           Codigo QR
+          Codigo QR
         </button>
         {modalVisible && (
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '600px', height: '600px', backgroundColor: 'lightgray' }} className="bg-success p-2 text-dark bg-opacity-50 rounded">
-           
+
             <QRCodeGenerator />
             <button onClick={() => setModalVisible(false)} className="btn btn-outline-danger">
               Cerrar ventana

@@ -41,7 +41,20 @@
     color: rgb(2, 15, 26);
 }
 
+.uno {
+    position: absolute; 
+    top:0;
+    left: 0; 
+    height: 100vh; 
+    width: 100vw;
+    margin: 0; 
+    padding: 0; 
+    background-color: #fff; 
+}
 
+.cartita{
+    margin-top: 50px;
+}
 
 @media(max-width:768px){
     .btn1{
@@ -60,12 +73,15 @@
 @media(max-width:768px){
     .cartita{
         position: absolute;
-        left: 5%;
-        width: 90%;
+        left: 15%;
+        width: 70%;
+        height: 50%;
         background-color: #f9f9f9;
+        top: 10%;
     }
     .uno{
-        background-color: #007bff;
+        background-color: #fff ;
     }
 }
+
 

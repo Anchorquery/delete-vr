@@ -17,8 +17,8 @@ function App() {
           <Route path='/' element={<Login />} />
           <Route path='/gallery' element={<ImageGallery />} />
           <Route path='/upload' element={<ImageForm />} />
-          <Route path='/images/:id' element={<ImageDetail />} />
-          <Route path="/solo-modelo/:id" element={<SoloModelo />} />
+          <Route path='/images/:slug' element={<ImageDetail />} />
+          <Route path="/solo-modelo/:slug" element={<SoloModelo />} />
         </Routes>
       </div>
    );
