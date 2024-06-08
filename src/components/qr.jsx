@@ -6,14 +6,16 @@ import "./qr.css"
 
 function QRCodeGenerator() {
     const [qr, setQr] = useState('');
-    const params = useParams(); 
+    const [url, setUrl] = useState('');
+    const params = useParams();
 
     useEffect(() => {
         GenerateQRCode();
-    }, []); 
+    }, []);
 
     const GenerateQRCode = () => {
         const currentUrl = `${window.location.origin}/solo-modelo/${params.slug}`;
+        setUrl(currentUrl); 
 
         QRCode.toDataURL(currentUrl, {
             width: 600,
@@ -30,14 +32,17 @@ function QRCodeGenerator() {
 
     return (
         <div className="app">
-            <h1 className='hola'>QR Generator</h1>
-           <br />
-           <br />
+            <h4 className='hola'>QR Generator</h4>
+         
             {qr && (
                 <>
+                <p className='url'>{url}</p> 
+                    <button onClick={() => navigator.clipboard.writeText(url)} class="btn btn-info" >Copiar URL</button>
                     <img className='qr' src={qr} alt="imagen QR" />
                     <br />
                     <a href={qr} download="qrcode.png" className='download' class="btn btn-info">Download</a>
+                    <br />
+                    
                 </>
             )}
         </div>
@@ -45,4 +50,3 @@ function QRCodeGenerator() {
 }
 
 export default QRCodeGenerator;
-

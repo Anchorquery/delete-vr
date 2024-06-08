@@ -98,7 +98,7 @@ const Detail = () => {
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '600px', height: '600px', backgroundColor: 'lightgray' }} className="bg-success p-2 text-dark bg-opacity-50 rounded">
 
             <QRCodeGenerator />
-            <button onClick={() => setModalVisible(false)} className="btn btn-outline-danger">
+            <button onClick={() => setModalVisible(false)} className="btn btn-danger cerrar">
               Cerrar ventana
             </button>
           </div>
