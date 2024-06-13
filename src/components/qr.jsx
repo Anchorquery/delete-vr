@@ -21,7 +21,7 @@ function QRCodeGenerator() {
             width: 600,
             margin: 1,
             color: {
-                dark: '#335383FF',
+                dark: '#000000',
                 light: '#EEEEEEFF'
             }
         }, (err, url) => {
@@ -40,7 +40,7 @@ function QRCodeGenerator() {
                     <button onClick={() => navigator.clipboard.writeText(url)} class="btn btn-info" >Copiar URL</button>
                     <img className='qr' src={qr} alt="imagen QR" />
                     <br />
-                    <a href={qr} download="qrcode.png" className='download' class="btn btn-info">Download</a>
+                    <a href={qr} download={`${params.slug}.png`} className='download' class="btn btn-info">Download</a>
                     <br />
                     
                 </>
