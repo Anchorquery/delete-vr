@@ -11,22 +11,22 @@ const SoloModelo = () => {
     const [image, setImage] = useState({
         title: "",
         url: "",
-        medidas:"",
+        medidas: "",
         slug: ""
     });
     const params = useParams();
 
     useEffect(() => {
         (async () => {
-          const slug = params.slug;
-          if (!slug) {
-            console.error('Slug inválido:', params.slug);
-            return;
-          }
-          const res = await axios.get(`https://test.ddvelop.com/api/images/${slug}`);
-          setImage(res.data);
+            const slug = params.slug;
+            if (!slug) {
+                console.error('Slug inválido:', params.slug);
+                return;
+            }
+            const res = await axios.get(`https://test.ddvelop.com/api/images/${slug}`);
+            setImage(res.data);
         })();
-      }, [params.slug]);
+    }, [params.slug]);
 
     const startAR = () => {
         // Abre la cámara del dispositivo
@@ -67,11 +67,13 @@ const SoloModelo = () => {
                         tone-mapping="commerce"
                         shadow-intensity="1"
                         camera-orbit="0deg 45deg 2m"
+                        min-camera-orbit="0deg 45deg 2m"
+                        max-camera-orbit="0deg 45deg 2m"
                         disable-zoom
                     ></model-viewer>
                     {/* <h1 className="diga1">{image.title}</h1>
                     <h5 className="diga1">Medidas: {image.medidas}</h5> */}
-                    
+
                     <button className="btn1 btn-primary" onClick={startAR}>Ver en tu espacio</button>
                 </div>
             </div>
