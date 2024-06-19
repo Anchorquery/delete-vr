@@ -46,6 +46,8 @@ const SoloModelo = () => {
         document.querySelector('.popup').style.display = 'none';
     }
 
+    const shouldDisableZoom = true
+
     const attributes = { 
         'disable-zoom': shouldDisableZoom ? true : undefined
        };
