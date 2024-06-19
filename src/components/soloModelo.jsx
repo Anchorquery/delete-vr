@@ -11,6 +11,7 @@ const SoloModelo = () => {
     const [image, setImage] = useState({
         title: "",
         url: "",
+        url2:"", //url ios
         medidas: "",
         slug: ""
     });
@@ -23,7 +24,7 @@ const SoloModelo = () => {
                 console.error('Slug inválido:', params.slug);
                 return;
             }
-            const res = await axios.get(`https://test.ddvelop.com/api/images/${slug}`);
+            const res = await axios.get(`https://delete-vr.onrender.com/api/images/${slug}`);
             setImage(res.data);
         })();
     }, [params.slug]);
@@ -58,6 +59,7 @@ const SoloModelo = () => {
 
                     <model-viewer
                         src={image.url}
+                        ios-src={image.url2}//ios
                         alt={image.title}
                         style={{ width: '100%', height: '400px' }}
                         auto-rotate
@@ -67,8 +69,8 @@ const SoloModelo = () => {
                         tone-mapping="commerce"
                         shadow-intensity="1"
                         camera-orbit="0deg 45deg 2m"
-                        min-camera-orbit="0deg 45deg 2m"
-                        max-camera-orbit="0deg 45deg 2m"
+                        max-field-of-view="45deg"
+                        min-field-of-view="45deg"
                         disable-zoom
                     ></model-viewer>
                     {/* <h1 className="diga1">{image.title}</h1>

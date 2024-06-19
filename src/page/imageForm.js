@@ -4,6 +4,7 @@ import axios from "axios";
 
 function Form() {
     const [file, setFile] = useState();
+    const [file2, setFile2] = useState()
     const [medidas, setMedidas] = useState(""); // Estado para las medidas
     const [title, setTitle] = useState("");
     const [uploadPercentage, setUploadPercentage] = useState(0);
@@ -13,6 +14,11 @@ function Form() {
         const file = e.target.files[0];
         setFile(file);
     };
+
+    const handleChange2 = (e) => {
+        const file = e.target.files[0];
+        setFile2(file);
+    };//formato ios
 
 
     const handleMedidasChange = (e) => {
@@ -24,12 +30,13 @@ function Form() {
         setLoading(true);
 
         const formData = new FormData();
-        formData.append("file", file);
+        formData.append("glbFile", file);
+        formData.append("usbzFile", file2); // Agregar el segundo archivo al FormData
         formData.append("title", title);
         formData.append("medidas", medidas); // Agregar las medidas al FormData
 
         try {
-            await axios.post("https://test.ddvelop.com/api/images/upload", formData, {
+            await axios.post("https://delete-vr.onrender.com/api/images/upload", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -42,6 +49,7 @@ function Form() {
 
             alert('Archivo cargado con éxito.');
             setFile(null);
+            setFile2(null); // Limpieza del estado del segundo archivo
             setMedidas(""); // Limpieza del estado de las medidas
             setTitle('');
             setUploadPercentage(0);
@@ -82,8 +90,17 @@ function Form() {
                         <h5>Archivo GLB</h5>
                         <input
                             type="file"
+                            name="glbFile"
                             className="form-control bg-dark text-light rounded-0 border border-secondary"
                             onChange={handleChange}
+                        />
+                        <br></br>
+                        <h5>Archivo USBZ</h5>
+                         <input
+                            type="file"
+                            name="usbzFile"
+                            className="form-control bg-dark text-light rounded-0 border border-secondary"
+                            onChange={handleChange2}
                         />
                         <br></br>
                       
