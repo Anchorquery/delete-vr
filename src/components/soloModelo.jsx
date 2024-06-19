@@ -46,6 +46,10 @@ const SoloModelo = () => {
         document.querySelector('.popup').style.display = 'none';
     }
 
+    const attributes = { 
+        'disable-zoom': shouldDisableZoom ? true : undefined
+       };
+
 
     return (
         <div className="uno row">
@@ -70,7 +74,7 @@ const SoloModelo = () => {
                         camera-orbit="0deg 45deg 2m"
                         max-field-of-view="45deg"
                         min-field-of-view="45deg"
-                        disable-zoom={shouldDisableZoom}
+                        {...attributes}
                     ></model-viewer>
                     {/* <h1 className="diga1">{image.title}</h1>
                     <h5 className="diga1">Medidas: {image.medidas}</h5> */}
