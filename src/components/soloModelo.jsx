@@ -49,7 +49,7 @@ const SoloModelo = () => {
     const shouldDisableZoom = true
 
     const attributes = { 
-        'disable-zoom': shouldDisableZoom ? true : undefined
+        'disable-zoom': shouldDisableZoom ? true : false
        };
 
 
