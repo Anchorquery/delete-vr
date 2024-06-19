@@ -13,7 +13,7 @@ function Gallery() {
     useEffect(() => {
         (async () => {
             try {
-                const res = await axios.get("https://delete-vr.onrender.com/api/images");
+                const res = await axios.get("https://test.ddvelop.com/api/images");
                 console.log(res);
                 setImages(res.data);
             } catch (error) {

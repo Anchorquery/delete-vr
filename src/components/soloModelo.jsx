@@ -24,7 +24,7 @@ const SoloModelo = () => {
                 console.error('Slug inválido:', params.slug);
                 return;
             }
-            const res = await axios.get(`https://delete-vr.onrender.com/api/images/${slug}`);
+            const res = await axios.get(`https://test.ddvelop.com/api/images/${slug}`);
             setImage(res.data);
         })();
     }, [params.slug]);

@@ -36,7 +36,7 @@ function Form() {
         formData.append("medidas", medidas); // Agregar las medidas al FormData
 
         try {
-            await axios.post("https://delete-vr.onrender.com/api/images/upload", formData, {
+            await axios.post("https://test.ddvelop.com/api/images/upload", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
