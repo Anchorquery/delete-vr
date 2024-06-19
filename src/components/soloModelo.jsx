@@ -70,7 +70,7 @@ const SoloModelo = () => {
                         camera-orbit="0deg 45deg 2m"
                         max-field-of-view="45deg"
                         min-field-of-view="45deg"
-                        disable-zoom={shouldDisableZoom ? true : undefined}
+                        disable-zoom={shouldDisableZoom}
                     ></model-viewer>
                     {/* <h1 className="diga1">{image.title}</h1>
                     <h5 className="diga1">Medidas: {image.medidas}</h5> */}
