@@ -29,17 +29,16 @@ const SoloModelo = () => {
         })();
     }, [params.slug]);
 
-    const startAR = () => {
-        // Abre la cámara del dispositivo
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function (stream) {
-                // La cámara está activa, puedes hacer algo con el flujo de video si lo deseas
-                console.log("Cámara activada");
-            })
-            .catch(function (error) {
-                // Si hay un error al acceder a la cámara
-                console.error("Error al acceder a la cámara:", error);
-            });
+    const startAR = async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            // La cámara está activa, puedes hacer algo con el flujo de video si lo deseas
+            console.log("Cámara activada");
+        } catch (error) {
+            // Muestra un mensaje de error en la interfaz de usuario
+            document.getElementById("error-message").textContent = "Error al acceder a la cámara.";
+            console.error("Error al acceder a la cámara:", error);
+        }
     };
 
     function cerrarCartel() {
@@ -71,7 +70,7 @@ const SoloModelo = () => {
                         camera-orbit="0deg 45deg 2m"
                         max-field-of-view="45deg"
                         min-field-of-view="45deg"
-                        disable-zoom
+                        disable-zoom={shouldDisableZoom ? true : undefined}
                     ></model-viewer>
                     {/* <h1 className="diga1">{image.title}</h1>
                     <h5 className="diga1">Medidas: {image.medidas}</h5> */}
